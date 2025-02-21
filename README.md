@@ -9,10 +9,10 @@ You can access the dataset and explore it using **DataCamp's DataLab**:
 🔗 [DataCamp Unicorns Database](https://www.datacamp.com/datalab/w/02a4c191-3c7a-46de-ad7a-e9c708c51327/edit)  
 
 ### What is a Unicorn Company?  
-A **unicorn company** is a privately held startup with a valuation exceeding **$1 billion**. These companies are often backed by venture capital and operate in various industries.  
+A **unicorn company** is a term describe privately held startups whose valuation exceeds **$1 billion**. These companies are often backed by venture capital and operate in various industries.  
 
 ### Database Structure  
-The **unicorns** database consists of multiple tables, providing insights into different aspects of high-growth startups:  
+The **unicorns** database consists of multiple tables, providing insights into different aspects of high-growth startups from all over the world:  
 
 ![Database Schema](https://github.com/user-attachments/assets/e6679f9a-cc2e-469d-82eb-3f31e2d91574)  
 
@@ -20,13 +20,12 @@ The **unicorns** database consists of multiple tables, providing insights into d
 ### What companies have the biggest return on investment? 
 ```sql
 -- Finding top 10 companies with the highest ROI
-SELECT 
-    c.company, 
+SELECT  c.company, 
 	c.country,
 	i.industry,
-    f.valuation, 
-    f.funding, 
-    ROUND((f.valuation - f.funding) / NULLIF(f.funding, 0), 2) AS ROI  
+    	f.valuation, 
+    	f.funding, 
+    	ROUND((f.valuation - f.funding) / NULLIF(f.funding, 0), 2) AS ROI  
 FROM funding AS f
 JOIN companies AS c USING (company_id)
 JOIN industries AS i USING (company_id)
